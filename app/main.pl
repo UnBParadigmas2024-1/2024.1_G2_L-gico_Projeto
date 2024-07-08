@@ -4,6 +4,11 @@ supermercado(mercado2, 10).
 supermercado(mercado3, 3).
 supermercado(mercado4, 8).
 supermercado(mercado5, 15).
+supermercado(mercado6, 6).
+supermercado(mercado7, 12).
+supermercado(mercado8, 2).
+supermercado(mercado9, 9).
+supermercado(mercado10, 14).
 
 % Produtos e preços em cada supermercado
 produto(mercado1, arroz, 5.00).
@@ -35,6 +40,35 @@ produto(mercado5, leite, 3.10).
 produto(mercado5, carne, 24.50).
 produto(mercado5, pao, 5.80).
 
+produto(mercado6, arroz, 4.20).
+produto(mercado6, feijao, 3.20).
+produto(mercado6, leite, 3.40).
+produto(mercado6, carne, 23.50).
+produto(mercado6, pao, 5.70).
+
+produto(mercado7, arroz, 4.70).
+produto(mercado7, feijao, 3.70).
+produto(mercado7, leite, 3.00).
+produto(mercado7, carne, 25.00).
+produto(mercado7, pao, 6.00).
+
+produto(mercado8, arroz, 5.10).
+produto(mercado8, feijao, 4.10).
+produto(mercado8, leite, 2.90).
+produto(mercado8, carne, 26.50).
+produto(mercado8, pao, 6.30).
+
+produto(mercado9, arroz, 4.60).
+produto(mercado9, feijao, 3.60).
+produto(mercado9, leite, 3.30).
+produto(mercado9, carne, 24.80).
+produto(mercado9, pao, 5.90).
+
+produto(mercado10, arroz, 4.40).
+produto(mercado10, feijao, 3.40).
+produto(mercado10, leite, 3.20).
+produto(mercado10, carne, 24.30).
+produto(mercado10, pao, 5.60).
 
 % Função principal para executar a consulta
 consulta_supermercado :-
@@ -49,5 +83,3 @@ executar_consulta(1) :-
     write('Executando consulta 1...'), nl.
 executar_consulta(2) :-
     write('Executando consulta 2...'), nl.
-
-    

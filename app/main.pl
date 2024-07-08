@@ -1,6 +1,3 @@
-% Importar a base de dados de pratos
-:- [pratos].
-
 % Supermercados
 supermercado(mercado1, 5).  % Nome e distância em quilômetros (ida)
 supermercado(mercado2, 10).
@@ -86,6 +83,20 @@ executar_consulta(1) :-
     write('Executando consulta 1...'), nl.
 executar_consulta(2) :-
     write('Executando consulta 2...'), nl.
+
+% Ler dados do arquivo e preencher a base de dados
+carregar_pratos :-
+    open('dados_pratos.txt', read, Str),
+    ler_pratos(Str),
+    close(Str).
+
+ler_pratos(Str) :-
+    read(Str, Term),
+    ( Term == end_of_file ->
+        true
+    ; assertz(Term),
+      ler_pratos(Str)
+    ).
 
 % Exemplo de consulta que mostra pratos e produtos necessários
 consulta_prato(Prato) :-

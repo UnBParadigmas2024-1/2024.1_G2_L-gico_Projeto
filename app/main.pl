@@ -1,3 +1,6 @@
+% Importar a base de dados de pratos
+:- [pratos].
+
 % Supermercados
 supermercado(mercado1, 5).  % Nome e distância em quilômetros (ida)
 supermercado(mercado2, 10).
@@ -83,3 +86,14 @@ executar_consulta(1) :-
     write('Executando consulta 1...'), nl.
 executar_consulta(2) :-
     write('Executando consulta 2...'), nl.
+
+% Exemplo de consulta que mostra pratos e produtos necessários
+consulta_prato(Prato) :-
+    prato(Prato, Produtos),
+    write('Para preparar '), write(Prato), write(' você precisará de: '), nl,
+    listar_produtos(Produtos).
+
+listar_produtos([]).
+listar_produtos([H|T]) :-
+    write('- '), write(H), nl,
+    listar_produtos(T).

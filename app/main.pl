@@ -35,3 +35,19 @@ produto(mercado5, leite, 3.10).
 produto(mercado5, carne, 24.50).
 produto(mercado5, pao, 5.80).
 
+
+% Função principal para executar a consulta
+consulta_supermercado :-
+    write('Escolha uma opção:'), nl,
+    write('1 - Consulta 1'), nl,
+    write('2 - Consulta 2'), nl,
+    read(Consulta),
+    executar_consulta(Consulta).
+
+% Executa a consulta com base na opção do usuário
+executar_consulta(1) :-
+    write('Executando consulta 1...'), nl.
+executar_consulta(2) :-
+    write('Executando consulta 2...'), nl.
+
+    

@@ -115,3 +115,14 @@ adicionar_prato(Prato, Produtos) :-
     open('dados_pratos.txt', append, Str),
     write_term(Str, prato(Prato, Produtos), [fullstop(true), nl(true)]),
     close(Str).
+
+% Listar todos os pratos da base de dados
+listar_pratos :-
+    findall(Prato, prato(Prato, _), Pratos),
+    write('Pratos disponíveis:'), nl,
+    listar_pratos_aux(Pratos).
+
+listar_pratos_aux([]).
+listar_pratos_aux([H|T]) :-
+    write('- '), write(H), nl,
+    listar_pratos_aux(T).

@@ -1,6 +1,8 @@
 % Importa a base de dados de supermercados e produtos
 :- consult('supermercados.pl').
+:- consult('produtos.pl').
 :- consult('economizar_com_produtos.pl').
+
 
 % Função principal para executar a consulta
 menu :-

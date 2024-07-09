@@ -6,9 +6,10 @@ receita_possivel(IngredientesDisponiveis, NomeReceita) :-
 % Encontra todas as receitas possíveis usando setof
 sugerir_receitas(IngredientesDisponiveis, ReceitasPossiveis) :-
     setof(NomeReceita, receita_possivel(IngredientesDisponiveis, NomeReceita), ReceitasPossiveis).
-
+    
 % Define as receitas e seus ingredientes
 % receita(str:'receita', list:[ingredientes, ...])
+receita('Teste', ['ovos']).
 receita('Omelete', ['ovos', 'sal', 'oleo', 'cebola']).
 receita('Salada de Tomate', ['tomate', 'sal', 'azeite', 'cebola']).
 receita('Massa com Molho', ['massa', 'tomate', 'sal', 'azeite']).

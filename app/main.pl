@@ -108,3 +108,10 @@ listar_produtos([]).
 listar_produtos([H|T]) :-
     write('- '), write(H), nl,
     listar_produtos(T).
+
+% Adicionar um novo prato
+adicionar_prato(Prato, Produtos) :-
+    assertz(prato(Prato, Produtos)),
+    open('dados_pratos.txt', append, Str),
+    write_term(Str, prato(Prato, Produtos), [fullstop(true), nl(true)]),
+    close(Str).

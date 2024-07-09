@@ -51,3 +51,19 @@ executar_consulta(2) :-
     write('Executando consulta 2...'), nl.
 
     
+
+main:-
+    [receitas],[operacoes],[cores],
+    % Definir a lista de ingredientes disponíveis
+    IngredientesDisponiveis = ['ovos', 'sal', 'oleo', 'cebola', 'tomate', 'azeite'],
+
+    % Coletar ingredientes do usuário
+    imprimir_cor(azul, 'Bem-vindo ao sistema de sugestão de receitas!'), nl,
+    writeln('Por favor, digite os ingredientes que você possui, um por vez.'), nl,
+    imprimir_cor(cinza, 'Quando terminar, pressione '), imprimir_cor(vermelho, 'Enter'), imprimir_cor(cinza, '.'), nl, nl,
+
+    % Consultar as receitas possíveis
+    sugerir_receitas(IngredientesDisponiveis, ReceitasPossiveis),
+    
+    % Exibir as receitas possíveis
+    imprimir_cor(verde, 'Receitas que podem ser feitas: '), nl, imprimir_receitas(ReceitasPossiveis), nl.

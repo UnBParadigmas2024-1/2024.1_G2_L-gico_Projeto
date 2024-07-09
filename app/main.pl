@@ -126,3 +126,22 @@ listar_pratos_aux([]).
 listar_pratos_aux([H|T]) :-
     write('- '), write(H), nl,
     listar_pratos_aux(T).
+
+main:-
+    [receitas],[operacoes],[cores],
+    % Definir a lista de ingredientes disponíveis
+    % IngredientesDisponiveis = ['ovos', 'sal', 'oleo', 'cebola', 'tomate', 'azeite'],
+    % IngredientesDisponiveis = [ovos],
+
+    % Coletar ingredientes do usuário
+    imprimir_cor(azul, 'Bem-vindo ao sistema de sugestão de receitas!'), nl,
+    writeln('Por favor, digite os ingredientes que você possui, um por vez.'), nl,
+    imprimir_cor(cinza, 'Quando terminar, pressione '), imprimir_cor(vermelho, 'Enter'), imprimir_cor(cinza, '.'), nl, nl,
+    coletar_ingredientes(IngredientesDisponiveis),
+    writeln(IngredientesDisponiveis),
+    
+    % Consultar as receitas possíveis
+    sugerir_receitas(IngredientesDisponiveis, ReceitasPossiveis),
+    
+    % Exibir as receitas possíveis
+    imprimir_cor(verde, 'Receitas que podem ser feitas: '), nl, imprimir_receitas(ReceitasPossiveis), nl.

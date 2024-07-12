@@ -1,3 +1,8 @@
+listar_produtos([]).
+listar_produtos([H|T]) :-
+    write('- '), write(H), nl,
+    listar_produtos(T).
+
 % Produtos e preços em cada supermercado
 produto(mercado1, arroz, 5.00).
 produto(mercado1, feijao, 4.00).

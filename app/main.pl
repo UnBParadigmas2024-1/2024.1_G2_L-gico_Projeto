@@ -45,7 +45,8 @@ executar_consulta(2) :-
         imprimir_cor(verde, 'Receitas que podem ser feitas: '), nl, imprimir_receitas(ReceitasPossiveis), nl
     ;
         % Exibir mensagem de erro
-        imprimir_cor(vermelho, 'Não foi possível encontrar receitas com os ingredientes disponíveis.'), nl
+        imprimir_cor(vermelho, 'Não foi possível encontrar receitas com os ingredientes disponíveis.'), nl, nl,
+        imprimir_cor(azul, 'Você deseja ver receitas possíveis que faltam ingredientes? (sim./nao.): '), ver_mais_receitas(IngredientesDisponiveis)
     ).
 
 

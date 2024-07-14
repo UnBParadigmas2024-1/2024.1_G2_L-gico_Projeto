@@ -9,6 +9,12 @@ imprimir_receitas([H|T]) :-
     write('- '), writeln(H),
     imprimir_receitas(T).
 
+% Imprime uma lista de receitas, cada uma em uma linha separada
+imprimir_receitas_incompletas([]).
+imprimir_receitas([H|T]) :-
+    write('- '), writeln(H),
+    imprimir_receitas(T).
+
 % Encontra todas as receitas possíveis usando setof
 sugerir_receitas(IngredientesDisponiveis, ReceitasPossiveis) :-
     setof(NomeReceita, receita_possivel(IngredientesDisponiveis, NomeReceita), ReceitasPossiveis).

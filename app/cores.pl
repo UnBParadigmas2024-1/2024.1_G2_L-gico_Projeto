@@ -5,8 +5,15 @@ cor_codigo(amarelo, "\e[33m").
 cor_codigo(azul, "\e[34m").
 cor_codigo(magenta, "\e[35m").
 cor_codigo(ciano, "\e[36m").
-cor_codigo(cinza, "\e[90m").
 cor_codigo(branco, "\e[37m").
+cor_codigo(cinza, "\e[90m").
+cor_codigo(preto, "\e[30m").
+cor_codigo(laranja, "\e[38;5;208m").
+cor_codigo(rosa, "\e[38;5;206m").
+cor_codigo(roxo, "\e[38;5;93m").
+cor_codigo(violeta, "\e[38;5;135m").
+cor_codigo(verde_claro, "\e[38;5;83m").
+cor_codigo(azul_claro, "\e[38;5;117m").
 cor_codigo(reset, "\e[0m").
 cor_codigo(negrito, "\e[1m").
 cor_codigo(italico, "\e[3m").

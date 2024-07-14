@@ -10,10 +10,12 @@ imprimir_receitas([H|T]) :-
     imprimir_receitas(T).
 
 % Imprime uma lista de receitas, cada uma em uma linha separada
-imprimir_receitas_incompletas([]).
-imprimir_receitas([H|T]) :-
-    write('- '), writeln(H),
-    imprimir_receitas(T).
+imprimir_receitas_incompletas([],_).
+imprimir_receitas_incompletas([H|T], IngredientesDisponiveis) :-
+    receita(H, IngredientesNecessarios),
+    subtract(IngredientesNecessarios, IngredientesDisponiveis, IngredientesFaltam),
+    format('- ~w~t~20| faltam: ~w~n', [H, IngredientesFaltam]),
+    imprimir_receitas_incompletas(T, IngredientesDisponiveis).
 
 % Encontra todas as receitas possíveis usando setof
 sugerir_receitas(IngredientesDisponiveis, ReceitasPossiveis) :-

@@ -33,9 +33,9 @@ ver_mais_receitas(IngredientesDisponiveis) :-
     
 mais_receitas(sim, IngredientesDisponiveis) :-
     imprimir_cor(azul, 'Qual a porcentagem de ingredientes você já quer ter para as receitas que vamos sugerir? (0-100): '),
-    read(PorcentagemJaDisponivel),
+    read(PorcentagemJaDisponivel), nl, nl,
     sugestoes_de_receitas(IngredientesDisponiveis, PorcentagemJaDisponivel, ReceitasFaltam),
-    imprimir_cor(azul, 'Receitas que faltam ingredientes: '), nl, imprimir_receitas(ReceitasFaltam), nl.
+    imprimir_cor(laranja, 'Receitas que faltam ingredientes: '), nl, imprimir_receitas_incompletas(ReceitasFaltam, IngredientesDisponiveis), nl.
 mais_receitas(nao, _) :-
     imprimir_cor(azul, 'Obrigado por usar o sistema de sugestão de receitas!'), nl, nl.
 mais_receitas(_, IngredientesDisponiveis) :-

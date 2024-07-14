@@ -3,6 +3,12 @@ receita_possivel(IngredientesDisponiveis, NomeReceita) :-
     receita(NomeReceita, IngredientesNecessarios),
     intersection(IngredientesNecessarios, IngredientesDisponiveis, IngredientesNecessarios).
 
+% Imprime uma lista de receitas, cada uma em uma linha separada
+imprimir_receitas([]).
+imprimir_receitas([H|T]) :-
+    write('- '), writeln(H),
+    imprimir_receitas(T).
+
 % Encontra todas as receitas possíveis usando setof
 sugerir_receitas(IngredientesDisponiveis, ReceitasPossiveis) :-
     setof(NomeReceita, receita_possivel(IngredientesDisponiveis, NomeReceita), ReceitasPossiveis).

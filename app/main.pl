@@ -5,6 +5,8 @@
 
 :- consult('pratos.pl').
 :- consult('cores.pl').
+:- consult('receitas.pl').
+:- consult('operacoes.pl').
 
 limpar_terminal :-
     write('\e[2J').

@@ -28,3 +28,7 @@ receita('Salada de Tomate', ['tomate', 'sal', 'azeite', 'cebola']).
 receita('Massa com Molho', ['massa', 'tomate', 'sal', 'azeite']).
 receita('Bolo de Chocolate', ['farinha', 'ovos', 'acucar', 'chocolate', 'manteiga']).
 receita('Sopa de Legumes', ['cenoura', 'batata', 'cebola', 'agua', 'sal']).
+
+:- dynamic selecionado/1.
+selecionado('Omelete').
+selecionado('Salada de Tomate').

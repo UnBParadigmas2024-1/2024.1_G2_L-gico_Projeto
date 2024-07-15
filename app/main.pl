@@ -16,7 +16,8 @@ menu :-
     write('Escolha uma opção:'), nl,
     imprimir_cor(azul, '[1]'), write(' - Economizar com produtos mais baratos'), nl,
     imprimir_cor(azul, '[2]'), write(' - Sugestão de receitas com os ingredientes da sua casa'), nl,
-    imprimir_cor(azul, '[3]'), write(' - Cadastrar novo prato'), nl, % Nova opção
+    imprimir_cor(azul, '[3]'), write(' - Cadastrar novo prato'), nl,
+    imprimir_cor(azul, '[4]'), write(' - Ver lista de pratos'), nl,
     read(Consulta), limpar_terminal,
     executar_consulta(Consulta).
 
@@ -53,6 +54,10 @@ executar_consulta(2) :-
 executar_consulta(3) :-
     write('Executando consulta 3 - Cadastrar novo prato...'), nl,
     cadastrar_novo_prato.
+
+executar_consulta(4) :-
+    write('Executando consulta 4 - Ver lista de pratos...'), nl,
+    listar_pratos.
 
 executar_consulta(_) :-
     imprimir_cor(vermelho, 'Opção inválida!'), nl, nl, menu.

@@ -7,6 +7,7 @@ adicionar_prato(Prato, Produtos) :-
 
 % Listar todos os pratos da base de dados
 listar_pratos :-
+    carregar_pratos,
     findall(Prato, prato(Prato, _), Pratos),
     write('Pratos disponíveis:'), nl,
     listar_pratos_aux(Pratos).
@@ -42,6 +43,4 @@ cadastrar_novo_prato :-
     write('Digite os ingredientes do prato (como uma lista Prolog, por exemplo, [feijao, carne, arroz]): '), nl,
     read(Ingredientes),
     adicionar_prato(Prato, Ingredientes),
-    write('Novo prato cadastrado com sucesso!'), nl,
-    carregar_pratos.
-
+    write('Novo prato cadastrado com sucesso!'), nl.

@@ -8,10 +8,9 @@ economizar_com_produtos(ListaProdutos) :-
     economizar_com_produtos(ListaProdutos, [], [], 0).
 
 economizar_com_produtos([], Comprados, Faltando, TotalGasto) :-
-    % printar apenas Comprados, Faltando e TotalGasto
-   write('Comprados: '), write(Comprados), nl,
-   write('Faltando: '), write(Faltando), nl,
-   write('Total gasto: '), write(TotalGasto), nl.
+    mostrar_resultados(Comprados),
+    write(TotalGasto), nl,
+    (Faltando \= [] -> write('Os mercados estão sem estoque para os seguintes itens: '), write(Faltando), nl ; true).
     
 economizar_com_produtos([Produto|Restantes], Comprados, Faltando, TotalGasto) :-
     ( encontrar_mercado_mais_barato(Produto, Mercado, Preco) ->
@@ -30,3 +29,12 @@ economizar_com_produtos([Produto|Restantes], Comprados, Faltando, TotalGasto) :-
         NovoTotalGasto is TotalGasto
     ),
     economizar_com_produtos(Restantes, NovoComprados, NovoFaltando, NovoTotalGasto).
+
+% Executa a consulta e mostra os resultados
+mostrar_resultados([]) :-
+    write('Total gasto: R$').
+mostrar_resultados([(_, [], _)|Restante]) :-
+    mostrar_resultados(Restante).
+mostrar_resultados([(Mercado, Produtos, _)|Restante]) :-
+    write('Vá até o '), write(Mercado), write(' e compre os seguintes itens: '), write(Produtos), nl,
+    mostrar_resultados(Restante).

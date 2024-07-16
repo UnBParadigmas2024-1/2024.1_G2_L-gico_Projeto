@@ -28,7 +28,8 @@ executar_consulta(1) :-
     write('Executando consulta 1...'), nl,
     write('Digite a lista de produtos (como uma lista Prolog, por exemplo, [arroz, leite, feijao, abobora]): '), nl,
     read(ListaProdutos),
-    economizar_com_produtos(ListaProdutos).
+    % Testar a função principal
+    % economizar_com_produtos([arroz, leite, feijao, abobora, teste]).
 
 executar_consulta(2) :-
     write('Executando consulta 2...'), nl,

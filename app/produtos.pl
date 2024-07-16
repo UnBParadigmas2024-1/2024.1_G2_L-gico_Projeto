@@ -15,7 +15,7 @@ produto(mercado2, leite, 3.50).
 produto(mercado2, carne, 24.00).
 produto(mercado2, pao, 5.50).
 
-produto(mercado3, arroz, 5.50).
+produto(mercado3, arroz, 4.50).
 produto(mercado3, feijao, 4.50).
 produto(mercado3, leite, 2.50).
 produto(mercado3, carne, 26.00).
@@ -39,13 +39,13 @@ produto(mercado6, leite, 3.40).
 produto(mercado6, carne, 23.50).
 produto(mercado6, pao, 5.70).
 
-produto(mercado7, arroz, 4.70).
+produto(mercado7, arroz, 4.20).
 produto(mercado7, feijao, 3.70).
 produto(mercado7, leite, 3.00).
 produto(mercado7, carne, 25.00).
 produto(mercado7, pao, 6.00).
 
-produto(mercado8, arroz, 5.10).
+produto(mercado8, arroz, 4.20).
 produto(mercado8, feijao, 4.10).
 produto(mercado8, leite, 2.90).
 produto(mercado8, carne, 26.50).
@@ -62,3 +62,4 @@ produto(mercado10, feijao, 3.40).
 produto(mercado10, leite, 3.20).
 produto(mercado10, carne, 24.30).
 produto(mercado10, pao, 5.60).
+produto(mercado10, abobora, 6.00).

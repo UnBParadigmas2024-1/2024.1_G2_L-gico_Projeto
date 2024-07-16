@@ -1,4 +1,5 @@
 :- [cores].
+:- consult('economizar_com_produtos.pl').
 
 recupera_ingredientes_faltantes(IngredientesDisponiveis, IngredientesFaltantesUnicos) :-
     % Cria uma lista das listas de ingredientes faltantes com o findall em IngredientesFaltantesList
@@ -15,7 +16,7 @@ recupera_ingredientes_faltantes(IngredientesDisponiveis, IngredientesFaltantesUn
     setof(Ingrediente, ListaIngredientes^(
         member(ListaIngredientes, IngredientesFaltantesList),
         member(Ingrediente, ListaIngredientes)
-    ), IngredientesFaltantesUnicos).
+    ), IngredientesFaltantesUnicos), economizar_com_produtos(IngredientesFaltantesUnicos).
 
 % Conta quantos elementos de uma lista estão presentes em outra lista
 conta_ingredientes([], _, 0).

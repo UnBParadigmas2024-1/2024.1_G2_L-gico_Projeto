@@ -2,24 +2,28 @@
 :- consult('supermercados.pl').
 :- consult('produtos.pl').
 :- consult('economizar_com_produtos.pl').
+:- consult('ingredientes.pl').
 
 :- consult('pratos.pl').
 :- consult('cores.pl').
+
+
 
 limpar_terminal :-
     write('\e[2J').
 
 % Função principal para executar a consulta
-menu :-
-    limpar_terminal,
-    imprimir_cor(amarelo, '===== MENU ====='), nl,
-    write('Escolha uma opção:'), nl,
-    imprimir_cor(azul, '[1]'), write(' - Economizar com produtos mais baratos'), nl,
-    imprimir_cor(azul, '[2]'), write(' - Sugestão de receitas com os ingredientes da sua casa'), nl,
-    imprimir_cor(azul, '[3]'), write(' - Cadastrar novo prato'), nl,
-    imprimir_cor(azul, '[4]'), write(' - Ver lista de pratos'), nl,
-    read(Consulta), limpar_terminal,
-    executar_consulta(Consulta).
+    menu :-
+        limpar_terminal,
+        imprimir_cor(amarelo, '===== MENU ====='), nl,
+        write('Escolha uma opção:'), nl,
+        imprimir_cor(azul, '[1]'), write(' - Economizar com produtos mais baratos'), nl,
+        imprimir_cor(azul, '[2]'), write(' - Sugestão de receitas com os ingredientes da sua casa'), nl,
+        imprimir_cor(azul, '[3]'), write(' - Cadastrar novo prato'), nl,
+        imprimir_cor(azul, '[4]'), write(' - Ver lista de pratos'), nl,
+        imprimir_cor(azul, '[5]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta'), nl,
+        read(Consulta), limpar_terminal,
+        executar_consulta(Consulta).
 
 % Executa a consulta com base na opção do usuário
 executar_consulta(1) :-
@@ -58,6 +62,10 @@ executar_consulta(3) :-
 executar_consulta(4) :-
     write('Executando consulta 4 - Ver lista de pratos...'), nl,
     listar_pratos.
+
+executar_consulta(5) :-
+     write('Executando consulta 5 - Ver recomendações de pratos com base no meu tipo de dieta...'), nl,
+    sugerir_receitas.
 
 executar_consulta(_) :-
     imprimir_cor(vermelho, 'Opção inválida!'), nl, nl, menu.

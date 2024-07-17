@@ -8,3 +8,5 @@ prato(lanche, [pao, leite, cafe]).
 prato(cafe_completo, [cafe, pao, leite, carne]).
 prato(jantar_simples, [arroz, feijao, leite]).
 prato(almoco_completo, [arroz, feijao, carne, pao, leite]).
+prato(fondue, [carne, pao, leite]).
+prato(carreteiro, [carne, feijao, arroz]).

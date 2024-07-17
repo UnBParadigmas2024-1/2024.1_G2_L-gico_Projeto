@@ -1310,4 +1310,5 @@ encontrar_mais_baratos([(Produto, Produtos)|Resto], [(Produto, Preco, Mercado)|M
 mostrar_produtos_mais_baratos([]).
 mostrar_produtos_mais_baratos([(Produto, Preco, Mercado)|Resto]) :-
     format('Produto: ~w, Mercado: ~w, Preço: R$~2f~n', [Produto, Mercado, Preco]),
+    listar_pratos_por_produto(Produto), nl,
     mostrar_produtos_mais_baratos(Resto).

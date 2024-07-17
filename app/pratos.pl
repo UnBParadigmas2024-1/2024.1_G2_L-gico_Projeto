@@ -44,3 +44,11 @@ cadastrar_novo_prato :-
     read(Ingredientes),
     adicionar_prato(Prato, Ingredientes),
     write('Novo prato cadastrado com sucesso!'), nl.
+
+% Predicado para listar os pratos a partir de um produtos
+listar_pratos_por_produto(Produto) :-
+    carregar_pratos,
+    findall(Prato, (prato(Prato, Produtos), member(Produto, Produtos)), Pratos),
+    list_to_set(Pratos, PratosUnicos), % Remove duplicatas
+    write('Pratos que contêm '), write(Produto), write(':'), nl,
+    listar_pratos_aux(PratosUnicos).

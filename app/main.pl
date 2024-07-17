@@ -28,6 +28,8 @@ menu :-
     imprimir_cor(azul, '[7]'), write(' - Listar produtos de um mercado'), nl,
     imprimir_cor(azul, '[8]'), write(' - Cadastrar produtos em mercados'), nl,
     imprimir_cor(azul, '[9]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta'), nl,
+    imprimir_cor(azul, '[10]'), write(' - Ver recomendações de pratos com base no meu tipo de sabor favorito'), nl,
+    imprimir_cor(azul, '[11]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta e sabor favorito'), nl,
 
     read(Consulta), limpar_terminal,
     executar_consulta(Consulta).
@@ -90,8 +92,16 @@ executar_consulta(8) :-
     cadastrar_produto.
 
 executar_consulta(9) :-
-     write('Executando consulta 5 - Ver recomendações de pratos com base no meu tipo de dieta...'), nl,
-    sugerir_receitas.
+     write('Executando consulta 9 - Ver recomendações de pratos...'), nl,
+    sugerir_receitas_dieta.
+
+executar_consulta(10) :-
+     write('Executando consulta 10 - Ver recomendações de pratos...'), nl,
+    sugerir_receitas_sabor.
+
+executar_consulta(11) :-
+     write('Executando consulta 10 - Ver recomendações de pratos...'), nl,
+    sugerir_receitas_dieta_sabor.
 
 executar_consulta(_) :-
     imprimir_cor(vermelho, 'Opção inválida!'), nl, nl, menu.

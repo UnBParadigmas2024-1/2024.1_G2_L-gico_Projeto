@@ -28,9 +28,11 @@ menu :-
     imprimir_cor(azul, '[7]'), write(' - Listar produtos de um mercado'), nl,
     imprimir_cor(azul, '[8]'), write(' - Cadastrar produtos em mercados'), nl,
     imprimir_cor(azul, '[9]'), write(' - Carregar ingredientes de um arquivo'), nl,
-    imprimir_cor(azul, '[10]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta'), nl,
-    imprimir_cor(azul, '[11]'), write(' - Ver recomendações de pratos com base no meu tipo de sabor favorito'), nl,
-    imprimir_cor(azul, '[12]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta e sabor favorito'), nl,
+    imprimir_cor(azul, '[10]'), write(' - Cadastrar ingrediente'), nl,
+    imprimir_cor(azul, '[11]'), write(' - Listar ingredientes cadastrados'), nl,
+    imprimir_cor(azul, '[12]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta e sabor'), nl,
+    imprimir_cor(azul, '[13]'), write(' - Ver recomendações de pratos com base no meu tipo de sabor favorito'), nl,
+    imprimir_cor(azul, '[14]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta e sabor favorito'), nl,
 
     read(Consulta), limpar_terminal,
     executar_consulta(Consulta).
@@ -98,14 +100,22 @@ executar_consulta(9) :-
 
 executar_consulta(10) :-
      write('Executando consulta 10...'), nl,
-    sugerir_receitas_dieta.
+    cadastrar_ingrediente.
 
 executar_consulta(11) :-
      write('Executando consulta 11...'), nl,
-    sugerir_receitas_sabor.
+    listar_ingredientes.
 
 executar_consulta(12) :-
      write('Executando consulta 12...'), nl,
+    sugerir_receitas_dieta.
+
+executar_consulta(13) :-
+     write('Executando consulta 13...'), nl,
+    sugerir_receitas_sabor.
+
+executar_consulta(14) :-
+     write('Executando consulta 14...'), nl,
     sugerir_receitas_dieta_sabor.
 
 executar_consulta(_) :-

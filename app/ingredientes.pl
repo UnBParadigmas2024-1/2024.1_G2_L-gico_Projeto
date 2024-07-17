@@ -1,4 +1,5 @@
 % Definição dos ingredientes e suas dietas e sabores
+:- dynamic ingrediente/3.
 ingrediente(ovos, [vegetariana], [salgado]).
 ingrediente(sal, [sem_gluten, vegana, vegetariana], [salgado]).
 ingrediente(oleo, [sem_gluten, vegana, vegetariana], [neutro]).
@@ -126,6 +127,26 @@ imprimir_ingredientes([]).
 imprimir_ingredientes([Ingrediente|Resto]) :-
     write(Ingrediente), nl,
     imprimir_ingredientes(Resto).
+
+% Regra para cadastrar um novo ingrediente
+cadastrar_ingrediente :-
+    write('Nome do ingrediente: '), nl,
+    read_term(user_input, Nome, []), % Lê o nome do ingrediente como um termo
+    read_line_to_codes(user_input, _), % Limpa o buffer de entrada
+    atom_string(NomeAtom, Nome), % Converte o termo para átomo e depois para string
+
+    write('Características (ex. sem_gluten, vegana, vegetariana - separadas por vírgula): '), nl,
+    read_term(user_input, Caracteristicas, []), % Lê características como um termo
+    read_line_to_codes(user_input, _), % Limpa o buffer de entrada
+    atomic_list_concat(CaracteristicasLista, ',', Caracteristicas), % Converte para lista de átomos
+
+    write('Tipo (ex. salgado, doce, neutro - separados por vírgula): '), nl,
+    read_term(user_input, Tipos, []), % Lê tipos como um termo
+    read_line_to_codes(user_input, _), % Limpa o buffer de entrada
+    atomic_list_concat(TiposLista, ',', Tipos), % Converte para lista de átomos
+
+    assertz(ingrediente(NomeAtom, CaracteristicasLista, TiposLista)), % Adiciona o ingrediente à base de conhecimento
+    write('Ingrediente cadastrado com sucesso: '), write(NomeAtom), nl.
 
 % Regra principal para ler o tipo de dieta e sabor e imprimir as receitas
 sugerir_receitas_dieta_sabor :-

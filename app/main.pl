@@ -31,6 +31,7 @@ menu :-
     imprimir_cor(azul, '[10]'), write(' - Cadastrar ingrediente'), nl,
     imprimir_cor(azul, '[11]'), write(' - Listar ingredientes cadastrados'), nl,
     imprimir_cor(azul, '[12]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta e sabor favorito'), nl,
+    imprimir_cor(azul, '[13]'), write(' - Listar produtos mais baratos e os pratos possíveis'), nl,
 
     read(Consulta), limpar_terminal,
     executar_consulta(Consulta).
@@ -107,6 +108,10 @@ executar_consulta(11) :-
 executar_consulta(12) :-
      write('Executando consulta 12...'), nl,
     ler_e_chamar_recomendacao.
+
+executar_consulta(13) :-
+     write('Executando consulta 13...'), nl,
+    encontrar_produtos_mais_baratos.
 
 executar_consulta(_) :-
     imprimir_cor(vermelho, 'Opção inválida!'), nl, nl, menu.

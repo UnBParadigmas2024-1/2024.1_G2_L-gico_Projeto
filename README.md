@@ -166,7 +166,8 @@ Segue a tabela com as participações de cada membro do grupo no projeto.
 |Eric Chagas| - | - |
 |Fernando Vargas| - | - |
 |Guilherme Daniel| - | - |
-|Kevin Luis| - |Excelente|
+|Kevin Luis| Colaborei com o desenvolvimento das manipulações de arquivos, como a leitura e escrita de receitas. Além disso, contribuí com a implementação de funções auxiliares para a manipulação de listas e a implementação de funções para a manipulação de receitas, produtos e supermercados. Por último, colaborei também com a integração entre a função de completar a receita e economia de dinheiro com os produtos faltantes. |Excelente|
+|Excelente|
 |Thiago Vivan| - | - |
 |Victor Buendia| - Mecanismo para seleção de receitas a partir dos ingredientes em casa <br/> - Lógica para exibir receitas com ingredientes faltantes a partir de uma porcentagem de ingredientes <br/> - Módulo auxiliar para cálculos das receitas e manipulação do terminal (imprimir colorido, limpar a tela, etc) <br/> - Criação do functor que recupera uma lista de ingredientes faltantes para serem comprados no supermercado <br/> - Elaboração do README|Excelente|
 

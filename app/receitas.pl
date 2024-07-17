@@ -49,3 +49,24 @@ listar_receitas :-
     findall(Nome, receita(Nome, _), ListaReceitas),
     imprimir_cor(azul, 'Receitas disponíveis: '), nl,
     imprimir_receitas(ListaReceitas), nl.
+
+exportar_receitas_para_arquivo :-
+    open('receitas.txt', write, Stream),
+    findall((Nome, Ingredientes), receita(Nome, Ingredientes), ListaReceitas),
+    exportar_lista_de_receitas(ListaReceitas, Stream),
+    close(Stream),
+    write('Receitas exportadas com sucesso para receitas.txt'), nl.
+
+exportar_lista_de_receitas([], _).
+exportar_lista_de_receitas([(Nome, Ingredientes)|T], Stream) :-
+    format(Stream, "receita('~w', [", [Nome]),
+    exportar_ingredientes(Ingredientes, Stream),
+    writeln(Stream, "])."),
+    exportar_lista_de_receitas(T, Stream).
+
+exportar_ingredientes([], _).
+exportar_ingredientes([H], Stream) :-
+    format(Stream, "'~w'", [H]).
+exportar_ingredientes([H|T], Stream) :-
+    format(Stream, "'~w', ", [H]),
+    exportar_ingredientes(T, Stream).

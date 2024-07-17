@@ -1282,3 +1282,32 @@ cadastrar_produto :-
         assertz(produto(Mercado, Produto, Preco)),
         write('Produto cadastrado com sucesso!'), nl
     ).
+
+% Encontra o mercado mais barato para cada produto
+encontrar_produtos_mais_baratos :-
+    findall((Produto, Preco, Mercado), produto(Mercado, Produto, Preco), ListaProdutos),
+    agrupar_por_produto(ListaProdutos, ProdutosAgrupados),
+    encontrar_mais_baratos(ProdutosAgrupados, ProdutosMaisBaratos),
+    mostrar_produtos_mais_baratos(ProdutosMaisBaratos).
+
+% Agrupa produtos pelo seu nome
+agrupar_por_produto(ListaProdutos, ProdutosAgrupados) :-
+    setof(Produto, Preco^Mercado^member((Produto, Preco, Mercado), ListaProdutos), Produtos),
+    agrupar(Produtos, ListaProdutos, ProdutosAgrupados).
+
+agrupar([], _, []).
+agrupar([Produto|RestoProdutos], ListaProdutos, [(Produto, Produtos)|Agrupados]) :-
+    findall((Preco, Mercado), member((Produto, Preco, Mercado), ListaProdutos), Produtos),
+    agrupar(RestoProdutos, ListaProdutos, Agrupados).
+
+% Encontra o produto mais barato de cada grupo
+encontrar_mais_baratos([], []).
+encontrar_mais_baratos([(Produto, Produtos)|Resto], [(Produto, Preco, Mercado)|MaisBaratos]) :-
+    sort(Produtos, [(Preco, Mercado)|_]),
+    encontrar_mais_baratos(Resto, MaisBaratos).
+
+% Mostra os produtos mais baratos
+mostrar_produtos_mais_baratos([]).
+mostrar_produtos_mais_baratos([(Produto, Preco, Mercado)|Resto]) :-
+    format('Produto: ~w, Mercado: ~w, Preço: R$~2f~n', [Produto, Mercado, Preco]),
+    mostrar_produtos_mais_baratos(Resto).

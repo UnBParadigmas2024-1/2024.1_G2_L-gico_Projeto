@@ -22,6 +22,9 @@ menu :-
     imprimir_cor(azul, '[4]'), write(' - Ver lista de pratos'), nl,
     imprimir_cor(azul, '[5]'), write(' - Exportar receitas para um arquivo'), nl,
     imprimir_cor(azul, '[6]'), write(' - Carregar receitas de um arquivo'), nl,
+    imprimir_cor(azul, '[7]'), write(' - Listar produtos de um mercado'), nl,
+    imprimir_cor(azul, '[8]'), write(' - Cadastrar produtos em mercados'), nl,
+
     read(Consulta), limpar_terminal,
     executar_consulta(Consulta).
 
@@ -55,7 +58,6 @@ executar_consulta(2) :-
         imprimir_cor(azul, 'Você deseja ver receitas possíveis que faltam ingredientes? (sim./nao.): '), ver_mais_receitas(IngredientesDisponiveis)
     ).
 
-
 executar_consulta(3) :-
     write('Executando consulta 3...'), nl,
     listar_receitas,
@@ -74,6 +76,14 @@ executar_consulta(5) :-
 executar_consulta(6) :-
     write('Executando consulta 6...'), nl,
     carregar_receitas_de_arquivo.
-    
+
+executar_consulta(7) :-
+    write('Executando consulta 7...'), nl,
+    listar_produtos_mercado.
+
+executar_consulta(8) :-
+    write('Executando consulta 8...'), nl,
+    cadastrar_produto.
+
 executar_consulta(_) :-
     imprimir_cor(vermelho, 'Opção inválida!'), nl, nl, menu.

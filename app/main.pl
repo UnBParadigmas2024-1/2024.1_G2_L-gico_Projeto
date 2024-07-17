@@ -2,11 +2,14 @@
 :- consult('supermercados.pl').
 :- consult('produtos.pl').
 :- consult('economizar_com_produtos.pl').
+:- consult('ingredientes.pl').
 
 :- consult('pratos.pl').
 :- consult('cores.pl').
 :- consult('receitas.pl').
 :- consult('operacoes.pl').
+
+
 
 limpar_terminal :-
     write('\e[2J').
@@ -24,6 +27,10 @@ menu :-
     imprimir_cor(azul, '[6]'), write(' - Carregar receitas de um arquivo'), nl,
     imprimir_cor(azul, '[7]'), write(' - Listar produtos de um mercado'), nl,
     imprimir_cor(azul, '[8]'), write(' - Cadastrar produtos em mercados'), nl,
+    imprimir_cor(azul, '[9]'), write(' - Carregar ingredientes de um arquivo'), nl,
+    imprimir_cor(azul, '[10]'), write(' - Cadastrar ingrediente'), nl,
+    imprimir_cor(azul, '[11]'), write(' - Listar ingredientes cadastrados'), nl,
+    imprimir_cor(azul, '[12]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta e sabor favorito'), nl,
 
     read(Consulta), limpar_terminal,
     executar_consulta(Consulta).
@@ -84,6 +91,22 @@ executar_consulta(7) :-
 executar_consulta(8) :-
     write('Executando consulta 8...'), nl,
     cadastrar_produto.
+
+executar_consulta(9) :-
+     write('Executando consulta 9...'), nl,
+    carregar_ingredientes.
+
+executar_consulta(10) :-
+     write('Executando consulta 10...'), nl,
+    cadastrar_ingrediente.
+
+executar_consulta(11) :-
+     write('Executando consulta 11...'), nl,
+    listar_ingredientes.
+
+executar_consulta(12) :-
+     write('Executando consulta 12...'), nl,
+    ler_e_chamar_recomendacao.
 
 executar_consulta(_) :-
     imprimir_cor(vermelho, 'Opção inválida!'), nl, nl, menu.

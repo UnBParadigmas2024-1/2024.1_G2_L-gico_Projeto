@@ -23,6 +23,7 @@ sugerir_receitas(IngredientesDisponiveis, ReceitasPossiveis) :-
     
 % Define as receitas e seus ingredientes
 % receita(str:'receita', list:[ingredientes, ...])
+:- dynamic receita/2.
 receita('Omelete', ['ovos', 'sal', 'oleo', 'cebola']).
 receita('Salada de Tomate', ['tomate', 'sal', 'azeite', 'cebola']).
 receita('Massa com Molho', ['massa', 'tomate', 'sal', 'azeite']).
@@ -32,3 +33,19 @@ receita('Sopa de Legumes', ['cenoura', 'batata', 'cebola', 'agua', 'sal']).
 :- dynamic selecionado/1.
 selecionado('Omelete').
 selecionado('Salada de Tomate').
+
+gerenciar_receitas(adicionar) :-
+    write('Digite o nome da receita: '), read(Nome),
+    write('Digite os ingredientes (como uma lista Prolog): '), read(Ingredientes),
+    assertz(receita(Nome, Ingredientes)),
+    write('Receita adicionada com sucesso!'), nl.
+
+gerenciar_receitas(remover) :-
+    write('Digite o nome da receita que deseja remover: '), read(Nome),
+    retractall(receita(Nome, _)),
+    write('Receita removida com sucesso!'), nl.
+
+listar_receitas :-
+    findall(Nome, receita(Nome, _), ListaReceitas),
+    imprimir_cor(azul, 'Receitas disponíveis: '), nl,
+    imprimir_receitas(ListaReceitas), nl.

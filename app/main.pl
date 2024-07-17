@@ -6,6 +6,8 @@
 
 :- consult('pratos.pl').
 :- consult('cores.pl').
+:- consult('receitas.pl').
+:- consult('operacoes.pl').
 
 
 
@@ -13,23 +15,29 @@ limpar_terminal :-
     write('\e[2J').
 
 % Função principal para executar a consulta
-    menu :-
-        limpar_terminal,
-        imprimir_cor(amarelo, '===== MENU ====='), nl,
-        write('Escolha uma opção:'), nl,
-        imprimir_cor(azul, '[1]'), write(' - Economizar com produtos mais baratos'), nl,
-        imprimir_cor(azul, '[2]'), write(' - Sugestão de receitas com os ingredientes da sua casa'), nl,
-        imprimir_cor(azul, '[3]'), write(' - Cadastrar novo prato'), nl,
-        imprimir_cor(azul, '[4]'), write(' - Ver lista de pratos'), nl,
-        imprimir_cor(azul, '[5]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta'), nl,
-        read(Consulta), limpar_terminal,
-        executar_consulta(Consulta).
+menu :-
+    limpar_terminal,
+    imprimir_cor(amarelo, '===== MENU ====='), nl,
+    write('Escolha uma opção:'), nl,
+    imprimir_cor(azul, '[1]'), write(' - Economizar com produtos mais baratos'), nl,
+    imprimir_cor(azul, '[2]'), write(' - Sugestão de receitas com os ingredientes da sua casa'), nl,
+    imprimir_cor(azul, '[3]'), write(' - Cadastrar ou remover receita'), nl,
+    imprimir_cor(azul, '[4]'), write(' - Ver lista de pratos'), nl,
+    imprimir_cor(azul, '[5]'), write(' - Exportar receitas para um arquivo'), nl,
+    imprimir_cor(azul, '[6]'), write(' - Carregar receitas de um arquivo'), nl,
+    imprimir_cor(azul, '[7]'), write(' - Listar produtos de um mercado'), nl,
+    imprimir_cor(azul, '[8]'), write(' - Cadastrar produtos em mercados'), nl,
+    imprimir_cor(azul, '[9]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta'), nl,
+
+    read(Consulta), limpar_terminal,
+    executar_consulta(Consulta).
 
 % Executa a consulta com base na opção do usuário
 executar_consulta(1) :-
     write('Executando consulta 1...'), nl,
     write('Digite a lista de produtos (como uma lista Prolog, por exemplo, [arroz, leite, feijao, abobora]): '), nl,
     read(ListaProdutos),
+    % Testar a função principal
     economizar_com_produtos(ListaProdutos).
 
 executar_consulta(2) :-
@@ -54,16 +62,34 @@ executar_consulta(2) :-
         imprimir_cor(azul, 'Você deseja ver receitas possíveis que faltam ingredientes? (sim./nao.): '), ver_mais_receitas(IngredientesDisponiveis)
     ).
 
-
 executar_consulta(3) :-
-    write('Executando consulta 3 - Cadastrar novo prato...'), nl,
-    cadastrar_novo_prato.
+    write('Executando consulta 3...'), nl,
+    listar_receitas,
+    write('Você deseja adicionar ou remover uma receita? (adicionar/remover): '), nl,
+    read(Operacao),
+    gerenciar_receitas(Operacao).
 
 executar_consulta(4) :-
     write('Executando consulta 4 - Ver lista de pratos...'), nl,
-    listar_pratos.
+    listar_receitas.
 
 executar_consulta(5) :-
+    write('Executando consulta 5...'), nl,
+    exportar_receitas_para_arquivo.
+
+executar_consulta(6) :-
+    write('Executando consulta 6...'), nl,
+    carregar_receitas_de_arquivo.
+
+executar_consulta(7) :-
+    write('Executando consulta 7...'), nl,
+    listar_produtos_mercado.
+
+executar_consulta(8) :-
+    write('Executando consulta 8...'), nl,
+    cadastrar_produto.
+
+executar_consulta(9) :-
      write('Executando consulta 5 - Ver recomendações de pratos com base no meu tipo de dieta...'), nl,
     sugerir_receitas.
 

@@ -1,4 +1,22 @@
 :- [cores].
+:- consult('economizar_com_produtos.pl').
+
+recupera_ingredientes_faltantes(IngredientesDisponiveis, IngredientesFaltantesUnicos) :-
+    % Cria uma lista das listas de ingredientes faltantes com o findall em IngredientesFaltantesList
+    findall(
+        IngredientesFalt,
+        (
+            selecionado(NomeReceita),
+            receita(NomeReceita, IngredientesNecessarios),
+            subtract(IngredientesNecessarios, IngredientesDisponiveis, IngredientesFalt)
+        ),
+        IngredientesFaltantesList
+    ),
+    % Achata a lista de listas e remove duplicatas usando setof
+    setof(Ingrediente, ListaIngredientes^(
+        member(ListaIngredientes, IngredientesFaltantesList),
+        member(Ingrediente, ListaIngredientes)
+    ), IngredientesFaltantesUnicos), economizar_com_produtos(IngredientesFaltantesUnicos).
 
 % Conta quantos elementos de uma lista estão presentes em outra lista
 conta_ingredientes([], _, 0).
@@ -26,7 +44,7 @@ tem_ingredientes_suficientes(IngredientesDisponiveis, Receita, PorcentagemMinima
 sugestoes_de_receitas(IngredientesDisponiveis, PorcentagemMinima, SugestoesDeReceitas) :-
     setof(NomeReceita, tem_ingredientes_suficientes(IngredientesDisponiveis, NomeReceita, PorcentagemMinima), SugestoesDeReceitas).
 
-
+% Menu de interação para ver mais receitas
 ver_mais_receitas(IngredientesDisponiveis) :-
     read(Opcao),
     mais_receitas(Opcao, IngredientesDisponiveis).

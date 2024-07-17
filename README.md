@@ -153,7 +153,7 @@ Essa opção permite que você informe o seu tipo de dieta e o seu sabor favorit
 
 |Vídeo|Link|
 |-|-|
-|O Que Tem Pra Comer?: Apresentação do módulo Lógico| [Pasta de Vídeos](dd) |
+|O Que Tem Pra Comer?: Apresentação do módulo Lógico| [Pasta de Vídeos](https://github.com/UnBParadigmas2024-1/2024.1_G2_Logico_OQueTemPraComer/tree/main/assets/videos) |
 
 ## Participações
 

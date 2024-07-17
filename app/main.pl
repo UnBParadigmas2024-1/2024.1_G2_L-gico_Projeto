@@ -1,15 +1,15 @@
-% Importa a base de dados de supermercados e produtos
+:- use_module(library(lists)).
+:- [cores].
+:- consult('bebidas.pl').
 :- consult('supermercados.pl').
 :- consult('produtos.pl').
 :- consult('economizar_com_produtos.pl').
 :- consult('ingredientes.pl').
-
 :- consult('pratos.pl').
 :- consult('cores.pl').
 :- consult('receitas.pl').
 :- consult('operacoes.pl').
-
-
+:- consult('operacoes_bebidas.pl').
 
 limpar_terminal :-
     write('\e[2J').
@@ -31,6 +31,9 @@ menu :-
     imprimir_cor(azul, '[10]'), write(' - Cadastrar ingrediente'), nl,
     imprimir_cor(azul, '[11]'), write(' - Listar ingredientes cadastrados'), nl,
     imprimir_cor(azul, '[12]'), write(' - Ver recomendações de pratos com base no meu tipo de dieta e sabor favorito'), nl,
+    imprimir_cor(azul, '[13]'), write(' - Cadastrar nova bebida'), nl,
+    imprimir_cor(azul, '[14]'), write(' - Ver lista de bebidas'), nl,
+    imprimir_cor(azul, '[15]'), write(' - Sugerir bebidas com ingredientes disponíveis'), nl,
 
     read(Consulta), limpar_terminal,
     executar_consulta(Consulta).
@@ -40,7 +43,6 @@ executar_consulta(1) :-
     write('Executando consulta 1...'), nl,
     write('Digite a lista de produtos (como uma lista Prolog, por exemplo, [arroz, leite, feijao, abobora]): '), nl,
     read(ListaProdutos),
-    % Testar a função principal
     economizar_com_produtos(ListaProdutos).
 
 executar_consulta(2) :-
@@ -53,7 +55,7 @@ executar_consulta(2) :-
 
     coletar_ingredientes(IngredientesDisponiveis),nl,
     imprimir_cor(ciano, 'Seus ingredientes: '), writeln(IngredientesDisponiveis),
-    
+
     % Consultar as receitas possíveis
     (
         sugerir_receitas(IngredientesDisponiveis, ReceitasPossiveis) ->
@@ -93,20 +95,33 @@ executar_consulta(8) :-
     cadastrar_produto.
 
 executar_consulta(9) :-
-     write('Executando consulta 9...'), nl,
+    write('Executando consulta 9...'), nl,
     carregar_ingredientes.
 
 executar_consulta(10) :-
-     write('Executando consulta 10...'), nl,
+    write('Executando consulta 10...'), nl,
     cadastrar_ingrediente.
 
 executar_consulta(11) :-
-     write('Executando consulta 11...'), nl,
+    write('Executando consulta 11...'), nl,
     listar_ingredientes.
 
 executar_consulta(12) :-
-     write('Executando consulta 12...'), nl,
+    write('Executando consulta 12...'), nl,
     ler_e_chamar_recomendacao.
 
+executar_consulta(13) :-
+    write('Executando consulta 13...'), nl,
+    gerenciar_bebidas(1).
+
+executar_consulta(14) :-
+    write('Executando consulta 14...'), nl,
+    gerenciar_bebidas(2).
+
+executar_consulta(15) :-
+    write('Executando consulta 15...'), nl,
+    gerenciar_bebidas(3).
+
 executar_consulta(_) :-
-    imprimir_cor(vermelho, 'Opção inválida!'), nl, nl, menu.
+    imprimir_cor(vermelho, 'Opção inválida!'), nl, nl,
+    menu.

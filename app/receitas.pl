@@ -70,3 +70,25 @@ exportar_ingredientes([H], Stream) :-
 exportar_ingredientes([H|T], Stream) :-
     format(Stream, "'~w', ", [H]),
     exportar_ingredientes(T, Stream).
+
+carregar_receitas_de_arquivo :-
+    write('Isso irá sobrescrever todas as receitas existentes que não estejam salvas. Deseja continuar? (sim/nao): '), nl,
+    read(Resposta),
+    (Resposta == sim ->
+        retractall(receita(_, _)),  % Limpa todas as receitas existentes
+        open('receitas.txt', read, Stream),
+        ler_receitas(Stream),
+        close(Stream),
+        write('Receitas carregadas com sucesso de receitas.txt'), nl
+    ;
+        write('Operação cancelada.'), nl
+    ), 
+    nl,
+    listar_receitas.
+
+ler_receitas(Stream) :-
+    read(Stream, Term),
+    ( Term == end_of_file -> true
+    ; assertz(Term),
+      ler_receitas(Stream)
+    ).

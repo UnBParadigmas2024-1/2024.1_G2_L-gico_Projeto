@@ -21,6 +21,7 @@ menu :-
     imprimir_cor(azul, '[3]'), write(' - Cadastrar ou remover receita'), nl,
     imprimir_cor(azul, '[4]'), write(' - Ver lista de pratos'), nl,
     imprimir_cor(azul, '[5]'), write(' - Exportar receitas para um arquivo'), nl,
+    imprimir_cor(azul, '[6]'), write(' - Carregar receitas de um arquivo'), nl,
     read(Consulta), limpar_terminal,
     executar_consulta(Consulta).
 
@@ -70,5 +71,9 @@ executar_consulta(5) :-
     write('Executando consulta 5...'), nl,
     exportar_receitas_para_arquivo.
 
+executar_consulta(6) :-
+    write('Executando consulta 6...'), nl,
+    carregar_receitas_de_arquivo.
+    
 executar_consulta(_) :-
     imprimir_cor(vermelho, 'Opção inválida!'), nl, nl, menu.

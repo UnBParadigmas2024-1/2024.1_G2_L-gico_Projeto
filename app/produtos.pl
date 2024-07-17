@@ -1289,7 +1289,7 @@ encontrar_produtos_mais_baratos :-
     agrupar_por_produto(ListaProdutos, ProdutosAgrupados),
     encontrar_mais_baratos(ProdutosAgrupados, ProdutosMaisBaratos),
     mostrar_produtos_mais_baratos(ProdutosMaisBaratos).
-
+    
 % Agrupa produtos pelo seu nome
 agrupar_por_produto(ListaProdutos, ProdutosAgrupados) :-
     setof(Produto, Preco^Mercado^member((Produto, Preco, Mercado), ListaProdutos), Produtos),
@@ -1312,3 +1312,28 @@ mostrar_produtos_mais_baratos([(Produto, Preco, Mercado)|Resto]) :-
     format('Produto: ~w, Mercado: ~w, Preço: R$~2f~n', [Produto, Mercado, Preco]),
     listar_pratos_por_produto(Produto), nl,
     mostrar_produtos_mais_baratos(Resto).
+
+% Calcula o preço total dos produtos de um prato
+preco_total_prato(Prato, ProdutosMaisBaratos, PrecoTotal) :-
+    prato(Prato, Ingredientes),
+    findall(Preco, (member(Ingrediente, Ingredientes), member((Ingrediente, Preco, _), ProdutosMaisBaratos)), Precos),
+    sum_list(Precos, PrecoTotal).
+
+% Lista o preço total de cada prato
+listar_precos_pratos(ProdutosMaisBaratos) :-
+    findall(Prato, prato(Prato, _), Pratos),
+    listar_precos_pratos_aux(Pratos, ProdutosMaisBaratos).
+
+listar_precos_pratos_aux([], _).
+listar_precos_pratos_aux([Prato|Restantes], ProdutosMaisBaratos) :-
+    preco_total_prato(Prato, ProdutosMaisBaratos, PrecoTotal),
+    format('Prato: ~w, Preço total: R$~2f~n', [Prato, PrecoTotal]),
+    listar_precos_pratos_aux(Restantes, ProdutosMaisBaratos).
+
+% Exemplo de consulta que mostra pratos e preços totais
+consulta_precos_pratos :-
+    carregar_pratos,
+    findall((Produto, Preco, Mercado), produto(Mercado, Produto, Preco), ListaProdutos),
+    agrupar_por_produto(ListaProdutos, ProdutosAgrupados),
+    encontrar_mais_baratos(ProdutosAgrupados, ProdutosMaisBaratos),
+    listar_precos_pratos(ProdutosMaisBaratos).

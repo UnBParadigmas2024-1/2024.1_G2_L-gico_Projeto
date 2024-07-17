@@ -23,7 +23,7 @@ sugerir_receitas(IngredientesDisponiveis, ReceitasPossiveis) :-
     
 % Define as receitas e seus ingredientes
 % receita(str:'receita', list:[ingredientes, ...])
-receita('Omelete', ['ovos', 'sal', 'cebola']).
+receita('Omelete', ['ovos', 'sal', 'oleo', 'cebola']).
 receita('Salada de Tomate', ['tomate', 'sal', 'azeite', 'cebola']).
 receita('Massa com Molho', ['massa', 'tomate', 'sal', 'azeite']).
 receita('Bolo de Chocolate', ['farinha', 'ovos', 'acucar', 'chocolate', 'manteiga']).

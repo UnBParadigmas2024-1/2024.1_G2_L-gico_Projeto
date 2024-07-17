@@ -159,5 +159,28 @@ sugerir_receitas_dieta_sabor :-
     writeln('Receitas compatíveis com a dieta e sabor:'),
     listar_receitas_dieta_sabor(DietaAtom, SaborAtom).
 
+limpa_terminal :-
+    write('\e[2J').
+
+% Regra para ler um número e chamar uma função com base nele
+ler_e_chamar_recomendacao :-
+    imprimir_cor(amarelo, '===== RECOMENDAÇÃO DE PRATOS ====='), nl,
+    write('Escolha uma opção:'), nl,
+    imprimir_cor(azul, '[1]'), write(' - Recomendação de pratos com base no meu tipo de dieta'), nl,
+    imprimir_cor(azul, '[2]'), write(' - Recomendação de pratos com base no meu tipo de sabor favorito'), nl,
+    imprimir_cor(azul, '[3]'), write(' - Recomendações de pratos com base no meu tipo de dieta e sabor favorito'), nl,
+    read(Number), % Lê um número da entrada padrão
+
+    % Chama a função correspondente com base no número lido
+    (Number =:= 1 ->
+        sugerir_receitas_dieta
+    ; Number =:= 2 ->
+        sugerir_receitas_sabor
+    ; Number =:= 3 ->
+        sugerir_receitas_dieta_sabor
+    ; % Se o número não corresponder a nenhum caso, exibe uma mensagem de erro
+        write('Opção inválida.'), nl
+    ).
+
 
 

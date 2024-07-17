@@ -97,6 +97,37 @@ listar_receitas_dieta_sabor(Dieta, Sabor) :-
     fail.
 listar_receitas_dieta_sabor(_, _).
 
+% Regra para carregar todos os ingredientes a partir de um arquivo txt
+carregar_ingredientes :-
+    retractall(ingrediente(_)),  % Limpa todos os ingredientes existentes
+    open('ingredientes.txt', read, Stream),
+    ler_ingredientes(Stream),
+    close(Stream),
+    write('Ingredientes carregados com sucesso de ingredientes.txt'), nl,
+    listar_ingredientes.
+
+% Regra para ler todos os ingredientes
+ler_ingredientes(Stream) :-
+    read_line_to_string(Stream, Line),
+    ( Line \== end_of_file ->
+        assertz(ingrediente(Line)),
+        ler_ingredientes(Stream)
+    ; true
+    ).
+
+% Regra buscar todos os ingredientes na base
+listar_ingredientes :-
+    findall(Ingrediente, ingrediente(Ingrediente, _, _), ListaIngredientes),
+    imprimir_cor(laranja, 'Ingredientes disponíveis: '), nl,
+    imprimir_ingredientes(ListaIngredientes), nl.
+
+% Regra para imprimir uma lista de ingredientes
+imprimir_ingredientes([]).
+imprimir_ingredientes([Ingrediente|Resto]) :-
+    write(Ingrediente), nl,
+    imprimir_ingredientes(Resto).
+
+% Regra principal para ler o tipo de dieta e sabor e imprimir as receitas
 sugerir_receitas_dieta_sabor :-
     writeln('Digite o tipo de dieta (vegetariana, vegana, sem_gluten):'),
     read(Dieta),

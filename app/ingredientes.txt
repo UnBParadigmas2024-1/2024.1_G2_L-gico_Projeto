@@ -1,0 +1,30 @@
+ingrediente(ovos, [vegetariana], [salgado]).
+ingrediente(sal, [sem_gluten, vegana, vegetariana], [salgado]).
+ingrediente(oleo, [sem_gluten, vegana, vegetariana], [neutro]).
+ingrediente(cebola, [sem_gluten, vegana, vegetariana], [salgado]).
+ingrediente(tomate, [sem_gluten, vegana, vegetariana], [salgado]).
+ingrediente(azeite, [sem_gluten, vegana, vegetariana], [neutro]).
+ingrediente(massa, [vegetariana], [neutro]).
+ingrediente(farinha, [vegetariana], [neutro]).
+ingrediente(acucar, [vegetariana], [doce]).
+ingrediente(chocolate, [vegetariana], [doce]).
+ingrediente(manteiga, [vegetariana], [neutro]).
+ingrediente(cenoura, [sem_gluten, vegana, vegetariana], [neutro]).
+ingrediente(batata, [sem_gluten, vegana, vegetariana], [neutro]).
+ingrediente(agua, [sem_gluten, vegana, vegetariana], [neutro]).
+ingrediente(alho, [sem_gluten, vegana, vegetariana], [salgado]).
+ingrediente(pimenta, [sem_gluten, vegana, vegetariana], [salgado]).
+ingrediente(queijo, [vegetariana], [salgado]).
+ingrediente(espinafre, [sem_gluten, vegana, vegetariana], [salgado]).
+ingrediente(alface, [sem_gluten, vegana, vegetariana], [salgado]).
+ingrediente(milho, [sem_gluten, vegana, vegetariana], [neutro]).
+ingrediente(arroz, [sem_gluten, vegana, vegetariana], [neutro]).
+ingrediente(feijao, [sem_gluten, vegana, vegetariana], [neutro]).
+ingrediente(lentilha, [sem_gluten, vegana, vegetariana], [neutro]).
+ingrediente(macarrao, [vegetariana], [neutro]).
+ingrediente(molho_de_tomate, [sem_gluten, vegana, vegetariana], [salgado]).
+ingrediente(mel, [vegetariana], [doce]).
+ingrediente(amendoim, [sem_gluten, vegana, vegetariana], [neutro]).
+ingrediente(coco, [sem_gluten, vegana, vegetariana], [doce]).
+ingrediente(limao, [sem_gluten, vegana, vegetariana], [azedo]).
+ingrediente(maracuja, [sem_gluten, vegana, vegetariana], [azedo]).

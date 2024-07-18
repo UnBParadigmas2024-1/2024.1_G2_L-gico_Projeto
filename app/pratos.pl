@@ -19,6 +19,7 @@ listar_pratos_aux([H|T]) :-
 
 % Ler dados do arquivo e preencher a base de dados
 carregar_pratos :-
+    retractall(prato(_, _)),  % Limpa  todos os pratos existentes
     open('dados_pratos.txt', read, Str),
     ler_pratos(Str),
     close(Str).
@@ -44,3 +45,31 @@ cadastrar_novo_prato :-
     read(Ingredientes),
     adicionar_prato(Prato, Ingredientes),
     write('Novo prato cadastrado com sucesso!'), nl.
+
+% Predicado para listar os pratos a partir de um produtos
+listar_pratos_por_produto(Produto) :-
+    carregar_pratos,
+    findall(Prato, (prato(Prato, Produtos), member(Produto, Produtos)), Pratos),
+    list_to_set(Pratos, PratosUnicos), % Remove duplicatas
+    write('Pratos que contêm '), write(Produto), write(':'), nl,
+    listar_pratos_aux(PratosUnicos).
+
+consultar_ingredientes_mais_baratos_prato :-
+    write('Digite o nome do prato: '), nl,
+    read(Prato),
+    prato(Prato, Ingredientes),
+    findall((Ingrediente, Mercado, Preco),
+            (member(Ingrediente, Ingredientes),
+                encontrar_mais_baratos_ingredientes(Ingrediente, Mercado, Preco)),
+            ListaIngredientes),
+    format('Ingredientes do prato ~w com o mercado mais barato e preço:~n', [Prato]),
+    imprimir_ingredientes_mais_baratos_prato(ListaIngredientes).
+
+encontrar_mais_baratos_ingredientes(Ingrediente, Mercado, Preco) :-
+    findall((P, M), produto(M, Ingrediente, P), Precos),
+    sort(Precos, [(Preco, Mercado)|_]).
+
+imprimir_ingredientes_mais_baratos_prato([]).
+imprimir_ingredientes_mais_baratos_prato([(Ingrediente, Mercado, Preco)|Resto]) :-
+    format('- Ingrediente: ~w, Mercado mais barato: ~w, Preço: R$~2f~n', [Ingrediente, Mercado, Preco]),
+    imprimir_ingredientes_mais_baratos_prato(Resto).

@@ -163,7 +163,7 @@ Segue a tabela com as participações de cada membro do grupo no projeto.
 | -- | -- | -- |
 |Ailton Aires| - Implementação da lógica de economizar na compra de produtos indo ao supermercado com produto mais barato <br/> - Ajuda na manipulação de arquivos <br/> - Ajuda no input de ingredientes do usuário <br/> - Ajuda na lista de ingredientes faltantes e na recuperação de uma lista de ingredientes faltantes <br/> |Excelente|
 |Arthur Sena| - Funcionalidades relacionadas a valores e orçamento <br/> - Busca por menor preço possível para cada produto <br/> - Busca por menor preço possível para cada prato <br/> - Busca por pratos possíveis a partir de valor do orçamento por input do usuário <br/> - Busca de onde comprar cada ingrediente a partir do prato (funcionalidade incompleta) | Boa |
-|Eric Chagas| - | - |
+|Eric Chagas| - Funcionalidades de encontrar os produtos mais baratos em todos os mercados e listar receitas possíveis com cada um <br/> - Mostrar a lista de pratos mais baratos possíveis com seu preço total (utilizando a combinação mais barata de ingredientes possível) <br/> - Funcionalidade de sugerir pratos possíveis baseado em um orçamento máximo passado via std input pelo usuário | Boa |
 |Fernando Vargas| - | - |
 |Gabriel Gomes| - Valores dos pratos e orçamento do usuário <br/> - Exibição dos produtos em promoção em cada mercado <br/> - Pratos possíveis com o orçamento fornecido <br/> |Boa|
 |Guilherme Daniel| - | - |

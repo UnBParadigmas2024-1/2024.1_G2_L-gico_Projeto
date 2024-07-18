@@ -19,6 +19,7 @@ listar_pratos_aux([H|T]) :-
 
 % Ler dados do arquivo e preencher a base de dados
 carregar_pratos :-
+    retractall(prato(_, _)),  % Limpa  todos os pratos existentes
     open('dados_pratos.txt', read, Str),
     ler_pratos(Str),
     close(Str).

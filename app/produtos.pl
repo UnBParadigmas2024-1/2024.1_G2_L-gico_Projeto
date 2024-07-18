@@ -105,7 +105,7 @@ encontrar_produtos_mais_baratos :-
     agrupar_por_produto(ListaProdutos, ProdutosAgrupados),
     encontrar_mais_baratos(ProdutosAgrupados, ProdutosMaisBaratos),
     mostrar_produtos_mais_baratos(ProdutosMaisBaratos).
-    
+        
 % Agrupa produtos pelo seu nome
 agrupar_por_produto(ListaProdutos, ProdutosAgrupados) :-
     setof(Produto, Preco^Mercado^member((Produto, Preco, Mercado), ListaProdutos), Produtos),
@@ -153,3 +153,23 @@ consulta_precos_pratos :-
     agrupar_por_produto(ListaProdutos, ProdutosAgrupados),
     encontrar_mais_baratos(ProdutosAgrupados, ProdutosMaisBaratos),
     listar_precos_pratos(ProdutosMaisBaratos).
+
+% Função para listar pratos dentro do orçamento
+listar_pratos_no_orcamento(Orcamento, ProdutosMaisBaratos) :-
+    findall((Prato, PrecoTotal), (prato(Prato, _), preco_total_prato(Prato, ProdutosMaisBaratos, PrecoTotal), PrecoTotal =< Orcamento), PratosPossiveis),
+    format('Pratos possíveis com orçamento de R$~2f:~n', [Orcamento]),
+    listar_pratos_possiveis(PratosPossiveis).
+
+listar_pratos_possiveis([]).
+listar_pratos_possiveis([(Prato, PrecoTotal)|Restantes]) :-
+    format('Prato: ~w, Preço total: R$~2f~n', [Prato, PrecoTotal]),
+    listar_pratos_possiveis(Restantes).
+
+% Consulta exemplo para listar pratos dentro do orçamento
+consulta_pratos_no_orcamento(Orcamento) :-
+    encontrar_produtos_mais_baratos,
+    shell('clear'),
+    findall((Produto, Preco, Mercado), produto(Mercado, Produto, Preco), ListaProdutos),
+    agrupar_por_produto(ListaProdutos, ProdutosAgrupados),
+    encontrar_mais_baratos(ProdutosAgrupados, ProdutosMaisBaratos),
+    listar_pratos_no_orcamento(Orcamento, ProdutosMaisBaratos).

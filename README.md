@@ -202,6 +202,7 @@ Para trabalhos futuros, alguns possíveis incrementos no projeto são:
 - Implementar um sistema de recomendação de receitas baseado no histórico de compras do usuário.
 - Adicionar um sistema de avaliação de receitas para que o usuário informe mais detalhes do contexto em que a receita será preparada, como um jantar romântico, uma comida rápida, algo barato, etc.
 - Implementar uma base de calorias para cada ingrediente e medir a quantidade de calorias de cada receita por porção. A partir disso, possibilitar estabelecer metas de calorias diárias e sugerir receitas que se encaixem nesse perfil.
+- Adicionar composição nutricional de cada alimento, para ser possível filtrar receitas de acordo com restrições alimentares específicas e alergias.
 
 ## Fontes
 

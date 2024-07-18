@@ -129,7 +129,7 @@ executar_consulta(16) :-
     encontrar_produtos_mais_baratos.
 
 executar_consulta(17) :-
-    write('Executando consulta 14...'), nl,
+    write('Executando consulta 17...'), nl,
     consulta_precos_pratos.
 
 executar_consulta(_) :-

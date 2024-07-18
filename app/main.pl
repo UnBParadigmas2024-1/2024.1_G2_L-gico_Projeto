@@ -134,7 +134,7 @@ executar_consulta(17) :-
     consulta_precos_pratos.
 
 executar_consulta(18) :-
-    write('Executando consulta 17...'), nl,
+    write('Executando consulta 18...'), nl,
     write('Digite o seu orçamento disponível: '), nl,
     read(Orcamento),
     consulta_pratos_no_orcamento(Orcamento).

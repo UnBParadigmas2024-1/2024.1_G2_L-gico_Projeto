@@ -53,3 +53,23 @@ listar_pratos_por_produto(Produto) :-
     list_to_set(Pratos, PratosUnicos), % Remove duplicatas
     write('Pratos que contêm '), write(Produto), write(':'), nl,
     listar_pratos_aux(PratosUnicos).
+
+consultar_ingredientes_mais_baratos_prato :-
+    write('Digite o nome do prato: '), nl,
+    read(Prato),
+    prato(Prato, Ingredientes),
+    findall((Ingrediente, Mercado, Preco),
+            (member(Ingrediente, Ingredientes),
+                encontrar_mais_baratos_ingredientes(Ingrediente, Mercado, Preco)),
+            ListaIngredientes),
+    format('Ingredientes do prato ~w com o mercado mais barato e preço:~n', [Prato]),
+    imprimir_ingredientes_mais_baratos_prato(ListaIngredientes).
+
+encontrar_mais_baratos_ingredientes(Ingrediente, Mercado, Preco) :-
+    findall((P, M), produto(M, Ingrediente, P), Precos),
+    sort(Precos, [(Preco, Mercado)|_]).
+
+imprimir_ingredientes_mais_baratos_prato([]).
+imprimir_ingredientes_mais_baratos_prato([(Ingrediente, Mercado, Preco)|Resto]) :-
+    format('- Ingrediente: ~w, Mercado mais barato: ~w, Preço: R$~2f~n', [Ingrediente, Mercado, Preco]),
+    imprimir_ingredientes_mais_baratos_prato(Resto).

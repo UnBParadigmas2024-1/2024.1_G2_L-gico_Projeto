@@ -35,6 +35,7 @@ menu :-
     imprimir_cor(azul, '[14]'), write(' - Ver lista de bebidas'), nl,
     imprimir_cor(azul, '[15]'), write(' - Sugerir bebidas com ingredientes disponíveis'), nl,
     imprimir_cor(azul, '[16]'), write(' - Listar produtos mais baratos e os pratos possíveis'), nl,
+    imprimir_cor(azul, '[17]'), write(' - Listar menor preço possível para cada prato'), nl,
 
     read(Consulta), limpar_terminal,
     executar_consulta(Consulta).
@@ -126,6 +127,10 @@ executar_consulta(15) :-
 executar_consulta(16) :-
     write('Executando consulta 16...'), nl,
     encontrar_produtos_mais_baratos.
+
+executar_consulta(17) :-
+    write('Executando consulta 14...'), nl,
+    consulta_precos_pratos.
 
 executar_consulta(_) :-
     imprimir_cor(vermelho, 'Opção inválida!'), nl, nl,

@@ -165,6 +165,7 @@ Segue a tabela com as participações de cada membro do grupo no projeto.
 |Arthur Sena| - Funcionalidades relacionadas a valores e orçamento <br/> - Busca por menor preço possível para cada produto <br/> - Busca por menor preço possível para cada prato <br/> - Busca por pratos possíveis a partir de valor do orçamento por input do usuário <br/> - Busca de onde comprar cada ingrediente a partir do prato (funcionalidade incompleta) | Boa |
 |Eric Chagas| - | - |
 |Fernando Vargas| - | - |
+|Gabriel Gomes| - Valores dos pratos e orçamento do usuário <br/> - Exibição dos produtos em promoção em cada mercado <br/> - Pratos possíveis com o orçamento fornecido <br/> |Boa|
 |Guilherme Daniel| - | - |
 |Kevin Luis| - |Excelente|
 |Thiago Vivan| - | - |

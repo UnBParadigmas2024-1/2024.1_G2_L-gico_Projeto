@@ -161,7 +161,7 @@ Segue a tabela com as participações de cada membro do grupo no projeto.
 
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-|Ailton Aires| - |Excelente|
+|Ailton Aires| - Implementação da lógica de economizar na compra de produtos indo ao supermercado com produto mais barato <br/> - Ajuda na manipulação de arquivos <br/> - Ajuda no input de ingredientes do usuário <br/> - Ajuda na lista de ingredientes faltantes e na recuperação de uma lista de ingredientes faltantes <br/> |Excelente|
 |Arthur Sena| - Funcionalidades relacionadas a valores e orçamento <br/> - Busca por menor preço possível para cada produto <br/> - Busca por menor preço possível para cada prato <br/> - Busca por pratos possíveis a partir de valor do orçamento por input do usuário <br/> - Busca de onde comprar cada ingrediente a partir do prato (funcionalidade incompleta) | Boa |
 |Eric Chagas| - | - |
 |Fernando Vargas| - | - |

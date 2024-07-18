@@ -53,7 +53,22 @@ mais_receitas(sim, IngredientesDisponiveis) :-
     imprimir_cor(azul, 'Qual a porcentagem de ingredientes você já quer ter para as receitas que vamos sugerir? (0-100): '),
     read(PorcentagemJaDisponivel), nl, nl,
     sugestoes_de_receitas(IngredientesDisponiveis, PorcentagemJaDisponivel, ReceitasFaltam),
-    imprimir_cor(laranja, 'Receitas que faltam ingredientes: '), nl, imprimir_receitas_incompletas(ReceitasFaltam, IngredientesDisponiveis), nl.
+    imprimir_cor(laranja, 'Receitas que faltam ingredientes: '), nl, imprimir_receitas_incompletas(ReceitasFaltam, IngredientesDisponiveis),nl,
+    ( ReceitasFaltam \= [] ->
+        imprimir_cor(azul, 'Você deseja completar alguma dessas receitas? (sim./nao.): '),
+        read(Resposta),
+        ( Resposta == sim ->
+            imprimir_cor(azul, 'Digite o nome da receita que deseja completar: '),
+            read(NomeReceita),
+            completar_receita(NomeReceita, IngredientesDisponiveis)
+        ;
+            write('Nenhuma receita será completada.'), nl
+        )
+    ;
+        write('Não há receitas que faltam ingredientes.'), nl
+    ).
+
+
 mais_receitas(nao, _) :-
     imprimir_cor(azul, 'Obrigado por usar o sistema de sugestão de receitas!'), nl, nl.
 mais_receitas(_, IngredientesDisponiveis) :-
@@ -83,3 +98,15 @@ coletar_ingredientes(Ingredientes) :-
         )
     ).
 
+% Função para completar uma receita
+completar_receita(NomeReceita, IngredientesDisponiveis) :-
+    receita(NomeReceita, IngredientesNecessarios),
+    subtract(IngredientesNecessarios, IngredientesDisponiveis, IngredientesFaltam),
+    write('Para completar a receita '), write(NomeReceita), write(', você precisará dos seguintes ingredientes: '), nl,
+    listar_ingredientes(IngredientesFaltam),
+    economizar_com_produtos(IngredientesFaltam).
+
+listar_ingredientes([]).
+listar_ingredientes([H|T]) :-
+    write('- '), write(H), nl,
+    listar_ingredientes(T).

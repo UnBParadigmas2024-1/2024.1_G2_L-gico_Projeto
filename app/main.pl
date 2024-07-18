@@ -36,6 +36,7 @@ menu :-
     imprimir_cor(azul, '[15]'), write(' - Sugerir bebidas com ingredientes disponíveis'), nl,
     imprimir_cor(azul, '[16]'), write(' - Listar produtos mais baratos e os pratos possíveis'), nl,
     imprimir_cor(azul, '[17]'), write(' - Listar menor preço possível para cada prato'), nl,
+    imprimir_cor(azul, '[18]'), write(' - Consultar possíveis por orçamento disponível'), nl,
 
     read(Consulta), limpar_terminal,
     executar_consulta(Consulta).
@@ -131,6 +132,12 @@ executar_consulta(16) :-
 executar_consulta(17) :-
     write('Executando consulta 17...'), nl,
     consulta_precos_pratos.
+
+executar_consulta(18) :-
+    write('Executando consulta 17...'), nl,
+    write('Digite o seu orçamento disponível: '), nl,
+    read(Orcamento),
+    consulta_pratos_no_orcamento(Orcamento).
 
 executar_consulta(_) :-
     imprimir_cor(vermelho, 'Opção inválida!'), nl, nl,

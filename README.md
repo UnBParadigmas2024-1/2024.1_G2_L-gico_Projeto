@@ -168,7 +168,7 @@ Segue a tabela com as participações de cada membro do grupo no projeto.
 |Gabriel Gomes| - Valores dos pratos e orçamento do usuário <br/> - Exibição dos produtos em promoção em cada mercado <br/> - Pratos possíveis com o orçamento fornecido <br/> |Boa|
 |Guilherme Daniel| - | - |
 |Kevin Luis| - |Excelente|
-|Thiago Vivan| - | - |
+|Thiago Vivan| - Funcionalidade de encontrar/selecionar/agrupar produtos por preço. <br/> - Mecanismo de busca de pratos possíveis de acordo com o produto. <br/> - Funcionalidade de consultar pratos de acordo com preço mínimo | Boa |
 |Victor Buendia| - Mecanismo para seleção de receitas a partir dos ingredientes em casa <br/> - Lógica para exibir receitas com ingredientes faltantes a partir de uma porcentagem de ingredientes <br/> - Módulo auxiliar para cálculos das receitas e manipulação do terminal (imprimir colorido, limpar a tela, etc) <br/> - Criação do functor que recupera uma lista de ingredientes faltantes para serem comprados no supermercado <br/> - Elaboração do README|Excelente|
 
 ## Outros 
